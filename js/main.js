@@ -3,6 +3,7 @@ document.getElementById("sendMessageBtn").addEventListener("click", () => {
     const message = document.getElementById("messageInput").value;
 
     if (message.trim()) {
+        console.log(`Sent message: ${message}`);  // Log the sent message
         childFrame.postMessage(message, "*");
     } else {
         alert("Please enter a message.");
@@ -10,5 +11,6 @@ document.getElementById("sendMessageBtn").addEventListener("click", () => {
 });
 
 window.addEventListener("message", (event) => {
+    console.log(`Received message: ${event.data}`);  // Log the received message
     document.getElementById("response").textContent = `Response: ${event.data}`;
 });

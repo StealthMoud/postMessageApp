@@ -1,11 +1,10 @@
 window.addEventListener("message", (event) => {
-    const messageList = document.getElementById("messageList");
+    console.log(`Child received: ${event.data}`);  // Log received message
 
-    // Create a new list item
+    const messageList = document.getElementById("messageList");
     const newMessage = document.createElement("li");
     newMessage.textContent = `Received: ${event.data}`;
     messageList.appendChild(newMessage);
 
-    // Respond back
     event.source.postMessage("Received your message!", event.origin);
 });
